@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .header{
+        height: 100px;
+        width: 100%;
+        background-color: black;
+    }
+    .header h1{
+        color: white;
+        padding-left: 40px;
+        padding-top: 30px;
+    }
+    .image-container img{
+        height: 300px;
+        width: 350px;
+    }
+    .image-container{
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .search-container{
+       padding-top: 20px;
+       padding-left: 32%;
+    }
+    .search-container input{
+        width: 50%;
+        height: 30px;
+        padding-left: 20px;
+        border: solid black 1px;
+    }
+    .search-container button{
+        margin-top: 20px;
+        height: 30px;
+        width: 100px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        border: solid black 1px;
+    }
+    .result-area{
+        display: grid;
+        place-items: center;
+        padding-top: 30px;
+    }
+</style>
+<body>
+    <div class="header">
+        <h1>Weather API</h1>
+    </div>
+    <div class="image-container">
+        <img src="https://www.itechyoutube.com/wp-content/uploads/2019/07/cloud-346710_1280.png" alt="">
+    </div>
+    <div class="search-container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter City"><br>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="result-area">
+        {% for msg in messages %}
+        <h1>{{msg}}</h1>
+        {% endfor %}
+        <h1>{{temp}}</h1>
+        <h1>{{pressure}}</h1>
+        <h1>{{humidity}}</h1>
+    </div>
+</body>
+</html>
